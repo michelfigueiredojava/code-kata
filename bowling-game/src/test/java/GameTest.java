@@ -5,8 +5,7 @@ import org.junit.jupiter.api.Test;
 /**
  * @author mfigueiredo
  */
-public class GameTest {
-
+class GameTest {
 
   private Game game;
 
@@ -48,20 +47,45 @@ public class GameTest {
     Assertions.assertEquals(24, game.score() );
   }
 
+  @Test void
+  game_of_strikes() {
+    rollMany(10, 12);
+
+    Assertions.assertEquals(300, game.score() );
+  }
+
+  @Test void
+  knockdown_nine_and_miss_ten_times() {
+
+    int firstRollPinsKnockedDown  = 9;
+    int secondRollPinsKnockedDown = 0;
+    int repeatTimes = 10;
+    rollPair(repeatTimes, firstRollPinsKnockedDown, secondRollPinsKnockedDown);
+
+    Assertions.assertEquals(90, game.score() );
+  }
+
+
+  @Test void
+  knockdown_five_and_spare_ten_times_and_fice() {
+    rollPair(10, 5, 5);
+    game.roll(5);
+
+    Assertions.assertEquals(150, game.score() );
+  }
+
+  private void rollPair(int repeatTimes, int firstRollPinsKnockedDown, int secondRollPinsKnockedDown) {
+    for (int i = 0; i < repeatTimes; i++) {
+      game.roll(firstRollPinsKnockedDown);
+      game.roll(secondRollPinsKnockedDown);
+    }
+  }
+
   private void rollSpare() {
     game.roll(5);
     game.roll(5);
   }
 
-  /*  @Test void
-  game_just_spares() {
-    rollMany(5);
-
-    int normalScoreAmount = 100;
-    int totalBonusAmount = 10 * 9;
-    Assertions.assertEquals(
-            normalScoreAmount + totalBonusAmount, game.score() );
-  }*/
 
   private void rollMany(int pins, int times) {
     for (int i = 0; i < times; i++) {
