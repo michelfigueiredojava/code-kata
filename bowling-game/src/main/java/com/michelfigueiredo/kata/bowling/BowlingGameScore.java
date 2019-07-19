@@ -1,3 +1,5 @@
+package com.michelfigueiredo.kata.bowling;
+
 /**
  * @author mfigueiredo
  */
