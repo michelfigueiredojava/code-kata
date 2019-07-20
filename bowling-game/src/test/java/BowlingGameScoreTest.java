@@ -1,7 +1,7 @@
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
 /**
  * @author mfigueiredo
@@ -20,7 +20,7 @@ class BowlingGameScoreTest {
     game_no_pins_get_hit() {
         rollMany(0, 20);
 
-        Assertions.assertEquals(0, game.score());
+        assertEquals(0, game.score());
     }
 
     @Test
@@ -28,7 +28,7 @@ class BowlingGameScoreTest {
     game_just_1_pin_get_hit() {
         rollMany(1, 20);
 
-        Assertions.assertEquals(20, game.score());
+        assertEquals(20, game.score());
     }
 
     @Test
@@ -38,7 +38,7 @@ class BowlingGameScoreTest {
         game.roll(3);
         rollMany(0, 17);
 
-        Assertions.assertEquals(16, game.score());
+        assertEquals(16, game.score());
     }
 
     @Test
@@ -49,7 +49,7 @@ class BowlingGameScoreTest {
         game.roll(4);
         rollMany(0, 16);
 
-        Assertions.assertEquals(24, game.score());
+        assertEquals(24, game.score());
     }
 
     @Test
@@ -57,7 +57,7 @@ class BowlingGameScoreTest {
     game_of_strikes() {
         rollMany(10, 12);
 
-        Assertions.assertEquals(300, game.score());
+        assertEquals(300, game.score());
     }
 
     @Test
@@ -69,7 +69,7 @@ class BowlingGameScoreTest {
         int repeatTimes = 10;
         rollPair(repeatTimes, firstRollPinsKnockedDown, secondRollPinsKnockedDown);
 
-        Assertions.assertEquals(90, game.score());
+        assertEquals(90, game.score());
     }
 
 
@@ -79,7 +79,7 @@ class BowlingGameScoreTest {
         rollPair(10, 5, 5);
         game.roll(5);
 
-        Assertions.assertEquals(150, game.score());
+        assertEquals(150, game.score());
     }
 
     private void rollPair(int repeatTimes, int firstRollPinsKnockedDown, int secondRollPinsKnockedDown) {
