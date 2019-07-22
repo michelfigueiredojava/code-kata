@@ -10,38 +10,35 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
  */
 class MiddleCharacterExtractorTest {
 
-
-    @Test void
-    can_create_object() {
-        new MiddleCharacterExtractor("test");
-    }
-
     @Test void
     can_extract_from_test() {
-        MiddleCharacterExtractor test = new MiddleCharacterExtractor("test");
-        String extracted = test.extractMiddle();
+        String extracted = MiddleCharacterExtractor.extractMiddle("test");
         assertEquals( extracted, "es");
     }
 
 
     @Test void
     can_extract_from_testing() {
-        MiddleCharacterExtractor test = new MiddleCharacterExtractor("testing");
-        String extracted = test.extractMiddle();
+
+        String extracted = MiddleCharacterExtractor.extractMiddle("testing");
         assertEquals( extracted, "t");
     }
 
     @Test void
     can_extract_from_middle() {
-        MiddleCharacterExtractor test = new MiddleCharacterExtractor("middle");
-        String extracted = test.extractMiddle();
+        String extracted = MiddleCharacterExtractor.extractMiddle("middle");
         assertEquals( extracted, "dd");
     }
 
     @Test void
     can_extract_from_A() {
-        MiddleCharacterExtractor test = new MiddleCharacterExtractor("A");
-        String extracted = test.extractMiddle();
+        String extracted = MiddleCharacterExtractor.extractMiddle("A");
         assertEquals( extracted, "A");
+    }
+
+    @Test void
+    can_extract_from_odd() {
+        String extracted = MiddleCharacterExtractor.extractMiddle("odd");
+        assertEquals( "d", extracted);
     }
 }
