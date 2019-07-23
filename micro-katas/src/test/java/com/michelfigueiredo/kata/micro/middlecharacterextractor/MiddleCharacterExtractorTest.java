@@ -1,4 +1,4 @@
-package com.michelfigueiredo.kata.micro.middle_character_extractor;
+package com.michelfigueiredo.kata.micro.middlecharacterextractor;
 
 import org.junit.jupiter.api.Test;
 
