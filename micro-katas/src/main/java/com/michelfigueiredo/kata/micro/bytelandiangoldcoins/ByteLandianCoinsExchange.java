@@ -23,7 +23,8 @@ public class ByteLandianCoinsExchange {
     static Long exchange(long amount) {
         if( amount < 0 || amount > 1_000_000_000 )throw new IllegalArgumentException("pass 0 <= n <= 1 000 000 000");
         ByteLandianCoinsExchange bytelandianCoinsExchange = new ByteLandianCoinsExchange();
-        return bytelandianCoinsExchange.calculateExchange(amount);
+        Long calculated = bytelandianCoinsExchange.calculateExchange(amount);
+        return calculated;
 
     }
 
@@ -31,9 +32,10 @@ public class ByteLandianCoinsExchange {
         Long calculated = map.get( amount );
         if( calculated == null ){
             if( amount <= 2L )return amount;
-            long dividedPer2 = calculateExchange((long) Math.floor(amount / 2));
+            double nonRoundedDividedPer2 = amount / 2;
+            long dividedPer2 = calculateExchange((long) Math.floor(nonRoundedDividedPer2));
             long dividedPer3 = calculateExchange((long) Math.floor(amount / 3));
-            long dividedPer4 = calculateExchange((long) Math.floor(amount / 4));
+            long dividedPer4 = calculateExchange((long) Math.floor(nonRoundedDividedPer2 / 2));
             long newAmount = dividedPer2 + dividedPer3 + dividedPer4;
             calculated = Math.max(amount, newAmount );
             map.put(amount, calculated);
