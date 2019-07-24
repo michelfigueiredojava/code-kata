@@ -33,9 +33,9 @@ public class ByteLandianCoinsExchange {
         if( calculated == null ){
             if( amount <= 2L )return amount;
             double nonRoundedDividedPer2 = amount / 2;
-            long dividedPer2 = calculateExchange((long) Math.floor(nonRoundedDividedPer2));
-            long dividedPer3 = calculateExchange((long) Math.floor(amount / 3));
-            long dividedPer4 = calculateExchange((long) Math.floor(nonRoundedDividedPer2 / 2));
+            long dividedPer2 = calculateExchange((long) nonRoundedDividedPer2);
+            long dividedPer3 = calculateExchange((long) amount / 3);
+            long dividedPer4 = calculateExchange((long) nonRoundedDividedPer2 / 2);
             long newAmount = dividedPer2 + dividedPer3 + dividedPer4;
             calculated = Math.max(amount, newAmount );
             map.put(amount, calculated);
