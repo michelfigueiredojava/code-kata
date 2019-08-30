@@ -6,10 +6,9 @@ public class BouncingBall {
         double ballHeight = buildingHeight;
 
         seenCounter = 1;
-        do{
+        while( (ballHeight = ballHeight * bounce) > windowHeight ){
             seenCounter = seenCounter + 2;
-            ballHeight = ballHeight * bounce;
-        }while( ballHeight > windowHeight );
+        };
 
         return seenCounter;
     }
